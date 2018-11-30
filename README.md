@@ -1,5 +1,4 @@
 # STEM Computer Vision
-## Mobile apps for iOS and Android
 
 I built this simple Xamarin.Forms solution for a local school's STEM event that I was attending as a STEM Ambassador. I found that using and stepping through the apps provided a fun and interactive learning experience for the students. 
 
