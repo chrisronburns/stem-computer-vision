@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:converters="clr-namespace:StemComputerVision.Converters" 
+    x:Class="StemComputerVision.Pages.FacePage"
+    Title="{Binding FaceText}">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{Binding SaveText}" Command="{Binding SaveCommand}" />
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            
+            <StackLayout Grid.Row="0"
+                BackgroundColor="{StaticResource blue}"
+                Padding="10">
+                <ff:CachedImage
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="200" HeightRequest="200"
+                    DownsampleToViewSize="true"
+                    Source="{Binding FaceResult.Path}">
+                    <ff:CachedImage.Transformations>
+                        <ffTransformations:CircleTransformation BorderHexColor="FFF" BorderSize="10" />
+                    </ff:CachedImage.Transformations>
+                </ff:CachedImage>
+            </StackLayout>
+            
+            <TableView Grid.Row="2"
+                Intent="Data">
+                <TableRoot>
+                    <TableSection Title="Basic">
+                        <TextCell Text="Age" Detail="{Binding FaceResult.Face.FaceAttributes.Age}" />
+                        <TextCell Text="Gender" Detail="{Binding FaceResult.Face.FaceAttributes.Gender}" />
+                        <TextCell Text="Image Path" Detail="{Binding FaceResult.Path}" />
+                    </TableSection>
+                    <TableSection Title="Smile">
+                        <TextCell Text="Smile" Detail="{Binding FaceResult.Face.FaceAttributes.Smile}" />
+                    </TableSection>
+                    <TableSection Title="Emotions">
+                        <TextCell Text="Anger" Detail="{Binding FaceResult.Face.FaceAttributes.Emotion.Anger}" />
+                        <TextCell Text="Contempt" Detail="{Binding FaceResult.Face.FaceAttributes.Emotion.Contempt}" />
+                        <TextCell Text="Disgust" Detail="{Binding FaceResult.Face.FaceAttributes.Emotion.Disgust}" />
+                        <TextCell Text="Fear" Detail="{Binding FaceResult.Face.FaceAttributes.Emotion.Fear}" />
+                        <TextCell Text="Happiness" Detail="{Binding FaceResult.Face.FaceAttributes.Emotion.Happiness}" />
+                        <TextCell Text="Neutral" Detail="{Binding FaceResult.Face.FaceAttributes.Emotion.Neutral}" />
+                        <TextCell Text="Sadness" Detail="{Binding FaceResult.Face.FaceAttributes.Emotion.Sadness}" />
+                        <TextCell Text="Surprise" Detail="{Binding FaceResult.Face.FaceAttributes.Emotion.Surprise}" />
+                    </TableSection>
+                    <TableSection Title="Hair">
+                        <TextCell Text="Bald" Detail="{Binding FaceResult.Face.FaceAttributes.Hair.Bald}" />
+                    </TableSection>
+                    <TableSection Title="Facial Hair">
+                        <TextCell Text="Beard" Detail="{Binding FaceResult.Face.FaceAttributes.FacialHair.Beard}" />
+                        <TextCell Text="Moustache" Detail="{Binding FaceResult.Face.FaceAttributes.FacialHair.Moustache}" />
+                        <TextCell Text="Sideburns" Detail="{Binding FaceResult.Face.FaceAttributes.FacialHair.Sideburns}" />
+                    </TableSection>
+                    <TableSection Title="Accessories">
+                        <TextCell Text="Glasses" Detail="{Binding FaceResult.Face.FaceAttributes.Glasses}" />
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

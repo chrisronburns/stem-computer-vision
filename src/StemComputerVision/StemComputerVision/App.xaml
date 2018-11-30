@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:StemComputerVision.Converters" 
+    x:Class="StemComputerVision.App">
+    <Application.Resources>
+        <!-- Colors -->
+        <Color x:Key="blue">#7AC0DE</Color>
+        <Color x:Key="red">#871E2B</Color>
+        
+        <!-- Converters -->
+        <converters:IsNotConverter x:Key="IsNot" />
+    </Application.Resources>
+</Application>
